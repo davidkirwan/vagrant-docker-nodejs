@@ -1,0 +1,3 @@
+== Vagrant-Docker-Nodejs ==
+
+Playing around with Vagrant VM, with dockerised Nodejs app with Redis and Nginx
