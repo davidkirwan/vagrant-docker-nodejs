@@ -5,7 +5,7 @@ redis="redis"
 nginx="nginx"
 
 
-docker run -itd --name=nodeapp $nodeapp
+docker run -itd -v /srv/vagrant/docker/nodeapp/nodeapp:/home/node/nodeapp --name=nodeapp $nodeapp
 sleep 1
 NODEAPP_IP=$(docker inspect nodeapp | jq '.[]| .NetworkSettings.Networks.bridge.IPAddress' | awk '{{gsub(/\"/, "")}; print $0}')
 NODEAPP_PORT=$(docker inspect nodeapp | jq '.[]| .NetworkSettings.Ports | keys[]' | awk '{{gsub(/\/tcp/, "")}; {gsub(/\"/, "")}; print $0}')

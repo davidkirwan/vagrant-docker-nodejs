@@ -13,13 +13,15 @@ RUN   curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash - ;\
       useradd -m -p "$1$b108a043$pKWeqlfFAmU9LbrGD.wnh." -s /bin/bash node ;\
       mkdir -p /home/node/nodeapp && chown node:node /home/node/nodeapp
 
-ADD nodeapp /home/node/nodeapp
+#ADD nodeapp /home/node/nodeapp
 
-RUN   cd /home/node/nodeapp;\
-      npm install
+#RUN   cd /home/node/nodeapp;\
+#      npm install
+
+RUN    npm install -g nodemon
 
 WORKDIR /home/node/nodeapp
 
 EXPOSE 5000
 
-CMD ["npm", "start"]
+CMD ["nodemon", "./bin/www"]
