@@ -14,4 +14,7 @@ sudo docker build -t nodeapp:latest /srv/vagrant/docker/nodeapp
 echo "building the redis:latest container image"
 sudo docker build -t redis:latest /srv/vagrant/docker/redis
 
+echo "building the redis:latest container image"
+sudo docker build -t rabbitmq:latest /srv/vagrant/docker/rabbitmq
+
 exit 0

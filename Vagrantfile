@@ -28,6 +28,8 @@ Vagrant.configure(2) do |config|
 
   # Forward ports from the guest
   config.vm.network :forwarded_port, :host => 8080, :guest => 80, auto_correct: true
+  config.vm.network :forwarded_port, :host => 15672, :guest => 15672, auto_correct: true
+  config.vm.network :forwarded_port, :host => 5672, :guest => 5672, auto_correct: true
 
   config.vm.provider "virtualbox" do |vb|
     # Allow VM to use host OS host and DNS settings

@@ -3,6 +3,7 @@ echo "Starting containers"
 nodeapp="nodeapp"
 redis="redis"
 nginx="nginx"
+rabbit="rabbitmq"
 
 
 docker run -itd -v /srv/vagrant/docker/nodeapp/nodeapp:/home/node/nodeapp --name=nodeapp $nodeapp
@@ -25,3 +26,9 @@ sleep 1
 NGINX_IP=$(docker inspect nginx | jq '.[]| .NetworkSettings.Networks.bridge.IPAddress' | awk '{{gsub(/\"/, "")}; print $0}')
 NGINX_PORT=$(docker inspect nginx | jq '.[]| .NetworkSettings.Ports | keys[]' | awk '{{gsub(/\/tcp/, "")}; {gsub(/\"/, "")}; print $0}')
 for i in $NGINX_PORT; do echo "$nginx container running on $NGINX_IP:$i"; done
+
+docker run -d --hostname rabbitmq --name rabbitmq -p 0.0.0.0:15672:15672 rabbitmq
+sleep 1
+RABBIT_IP=$(docker inspect rabbitmq | jq '.[]| .NetworkSettings.Networks.bridge.IPAddress' | awk '{{gsub(/\"/, "")}; print $0}')
+RABBIT_PORT=$(docker inspect rabbitmq | jq '.[]| .NetworkSettings.Ports | keys[]' | awk '{{gsub(/\/tcp/, "")}; {gsub(/\"/, "")}; print $0}')
+echo "$rabbit container running on $RABBIT_IP:$RABBIT_PORT"
