@@ -1,7 +1,8 @@
 == RabbitMQ ==
 
-.Run
-docker run -d --hostname rabbitmq --name rabbitmq -p 8080:15672 rabbitmq:latest
+.Enable HTTP Console
+docker exec -i -t rabbitmq /bin/bash
+rabbitmq-plugins enable rabbitmq_management
 
 .Javascript Library
 https://www.rabbitmq.com/tutorials/tutorial-one-javascript.html
