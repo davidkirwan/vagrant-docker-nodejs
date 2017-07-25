@@ -8,7 +8,7 @@ conn.start
 
 ch = conn.create_channel
 x = ch.topic("david")
-q = ch.queue("hello", :exclusive => true)
+q = ch.queue("queue1", :exclusive => true, :auto_delete => true)
 q.bind(x, :routing_key => "hello")
 
 puts " [*] Waiting for logs. To exit press CTRL+C"
