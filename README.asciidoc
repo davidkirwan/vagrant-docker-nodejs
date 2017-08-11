@@ -1,6 +1,6 @@
 == Vagrant-Docker-Nodejs ==
 
-Playing around with Vagrant VM, with dockerised Nodejs app with Redis and Nginx
+Playing around with Vagrant VM, with a dockerised Nodejs app with RabbitMQ, Redis and Nginx
 
 ------
 vagrant up --provision
